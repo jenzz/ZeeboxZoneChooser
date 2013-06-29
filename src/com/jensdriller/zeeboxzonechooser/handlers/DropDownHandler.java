@@ -9,14 +9,15 @@ import org.eclipse.jface.dialogs.MessageDialog;
 
 /**
  * Our sample handler extends AbstractHandler, an IHandler base class.
+ * 
  * @see org.eclipse.core.commands.IHandler
  * @see org.eclipse.core.commands.AbstractHandler
  */
-public class SampleHandler extends AbstractHandler {
+public class DropDownHandler extends AbstractHandler {
 	/**
 	 * The constructor.
 	 */
-	public SampleHandler() {
+	public DropDownHandler() {
 	}
 
 	/**
@@ -24,11 +25,15 @@ public class SampleHandler extends AbstractHandler {
 	 * from the application context.
 	 */
 	public Object execute(ExecutionEvent event) throws ExecutionException {
-		IWorkbenchWindow window = HandlerUtil.getActiveWorkbenchWindowChecked(event);
-		MessageDialog.openInformation(
-				window.getShell(),
-				"ZeeboxZoneChooser",
-				"Hello, Eclipse world");
+		IWorkbenchWindow window = HandlerUtil
+				.getActiveWorkbenchWindowChecked(event);
+
+		String selection = event
+				.getParameter("com.jensdriller.zeeboxzonechooser.dropdown.msg");
+		selection = selection == null ? "zeebox" : selection;
+
+		MessageDialog.openInformation(window.getShell(), "Popup Window",
+				"You selected " + selection + ".");
 		return null;
 	}
 }
