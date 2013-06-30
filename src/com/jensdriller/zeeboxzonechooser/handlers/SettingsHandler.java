@@ -50,7 +50,11 @@ public class SettingsHandler extends AbstractHandler {
 					return new Status(IStatus.ERROR, Activator.PLUGIN_ID, 0,
 							"Please select a file!", null);
 				}
-				return new Status(IStatus.OK, Activator.PLUGIN_ID, 0, "", null);
+				String currentPath = loadBuildConstantsPath();
+				String message = currentPath != null ? "Current selection: "
+						+ currentPath : "";
+				return new Status(IStatus.OK, Activator.PLUGIN_ID, 0, message,
+						null);
 			}
 		});
 
