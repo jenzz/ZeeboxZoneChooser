@@ -4,8 +4,8 @@
    <!-- Toolbar Dropdown Menu -->
    <extension point="org.eclipse.ui.commands">
       <category id="com.jensdriller.zeeboxzonechooser.dropdown.category" name="DropDown"></category>
-      <command categoryId="com.jensdriller.zeeboxzonechooser.dropdown.category" id="com.jensdriller.zeeboxzonechooser.dropdown.command" name="DropDown">
-         <commandParameter id="com.jensdriller.zeeboxzonechooser.dropdown.msg" name="DropDown Option" optional="true"></commandParameter>
+      <command categoryId="com.jensdriller.zeeboxzonechooser.dropdown.category" id="com.jensdriller.zeeboxzonechooser.dropdown.logo" name="Logo">
+         <commandParameter id="com.jensdriller.zeeboxzonechooser.dropdown.logo" name="Logo" optional="true"></commandParameter>
       </command>
       <command categoryId="com.jensdriller.zeeboxzonechooser.dropdown.category" id="com.jensdriller.zeeboxzonechooser.dropdown.commandUS" name="US">
          <commandParameter id="com.jensdriller.zeeboxzonechooser.dropdown.msg" name="DropDown Option" optional="true"></commandParameter>
@@ -26,7 +26,7 @@
    
    <!-- Icons used for dropdown and for dropdown menu items -->
    <extension point="org.eclipse.ui.commandImages">
-      <image commandId="com.jensdriller.zeeboxzonechooser.dropdown.command" icon="icons/zeebox.png"></image>
+      <image commandId="com.jensdriller.zeeboxzonechooser.dropdown.logo" icon="icons/zeebox.png"></image>
       <image commandId="com.jensdriller.zeeboxzonechooser.dropdown.commandUS" icon="icons/us.png"></image>
       <image commandId="com.jensdriller.zeeboxzonechooser.dropdown.commandUK" icon="icons/gb.png"></image>
  	  <image commandId="com.jensdriller.zeeboxzonechooser.dropdown.commandIE" icon="icons/ie.png"></image>
@@ -35,7 +35,7 @@
    
    <!-- Handlers for each dropdown menu item clicked -->
    <extension point="org.eclipse.ui.handlers">
-      <handler commandId="com.jensdriller.zeeboxzonechooser.dropdown.command" class="com.jensdriller.zeeboxzonechooser.handlers.DropDownHandler"></handler>
+      <handler commandId="com.jensdriller.zeeboxzonechooser.dropdown.logo" class="com.jensdriller.zeeboxzonechooser.handlers.LogoHandler"></handler>
       <handler commandId="com.jensdriller.zeeboxzonechooser.dropdown.commandUS" class="com.jensdriller.zeeboxzonechooser.handlers.DropDownHandler"></handler>
       <handler commandId="com.jensdriller.zeeboxzonechooser.dropdown.commandUK" class="com.jensdriller.zeeboxzonechooser.handlers.DropDownHandler"></handler>
       <handler commandId="com.jensdriller.zeeboxzonechooser.dropdown.commandIE" class="com.jensdriller.zeeboxzonechooser.handlers.DropDownHandler"></handler>
@@ -48,12 +48,12 @@
       <!-- Toolbar Dropdown Menu -->
       <menuContribution locationURI="toolbar:org.eclipse.ui.main.toolbar?after=additions">
          <toolbar id="com.jensdriller.zeeboxzonechooser.dropdown.toolbar">
-            <command commandId="com.jensdriller.zeeboxzonechooser.dropdown.command" id="com.jensdriller.zeeboxzonechooser.dropdown.toolbar.command" style="pulldown" 
+            <command commandId="com.jensdriller.zeeboxzonechooser.dropdown.logo" id="com.jensdriller.zeeboxzonechooser.dropdown.toolbar.logo" style="pulldown" 
                      tooltip="Zeebox TVC Options">
             </command>
          </toolbar>
       </menuContribution>
-      <menuContribution locationURI="menu:com.jensdriller.zeeboxzonechooser.dropdown.toolbar.command">
+      <menuContribution locationURI="menu:com.jensdriller.zeeboxzonechooser.dropdown.toolbar.logo">
          <!-- Dropdown Menu Options -->
          <command commandId="com.jensdriller.zeeboxzonechooser.dropdown.commandUS" label="US" style="push">
             <parameter name="com.jensdriller.zeeboxzonechooser.dropdown.msg" value="US"></parameter>

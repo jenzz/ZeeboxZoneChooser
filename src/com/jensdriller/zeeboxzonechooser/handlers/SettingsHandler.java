@@ -42,22 +42,15 @@ public class SettingsHandler extends AbstractHandler {
 				new WorkbenchLabelProvider(),
 				new BaseWorkbenchContentProvider());
 		dialog.setInput(ResourcesPlugin.getWorkspace().getRoot());
-		dialog.setTitle("BuildConstants.java");
+		dialog.setTitle("Zeebox Zone Chooser - Settings");
 		dialog.setMessage("Select the BuildConstants.java file from your zeebox project:");
 		dialog.setValidator(new ISelectionStatusValidator() {
 			public IStatus validate(Object[] selection) {
-				if (selection.length == 0) {
-					return new Status(IStatus.ERROR, Activator.PLUGIN_ID, 0,
-							"", null);
-				}
 				if (selection.length == 1 && !(selection[0] instanceof IFile)) {
 					return new Status(IStatus.ERROR, Activator.PLUGIN_ID, 0,
 							"Please select a file!", null);
 				}
-				String currentPath = loadBuildConstantsPath();
-				String message = currentPath != null ? "Current selection: "
-						+ currentPath : "";
-				return new Status(IStatus.OK, Activator.PLUGIN_ID, 0, message,
+				return new Status(IStatus.ERROR, Activator.PLUGIN_ID, 0, "",
 						null);
 			}
 		});
