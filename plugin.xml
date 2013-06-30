@@ -20,7 +20,7 @@
          <commandParameter id="com.jensdriller.zeeboxzonechooser.dropdown.msg" name="DropDown Option" optional="true"></commandParameter>
       </command> 
       <command categoryId="com.jensdriller.zeeboxzonechooser.dropdown.category" id="com.jensdriller.zeeboxzonechooser.dropdown.commandSettings" name="Settings">
-         <commandParameter id="com.jensdriller.zeeboxzonechooser.dropdown.msg" name="DropDown Option" optional="true"></commandParameter>
+         <commandParameter id="com.jensdriller.zeeboxzonechooser.dropdown.settings" name="DropDown Option" optional="true"></commandParameter>
       </command> 
    </extension>
    
@@ -74,7 +74,7 @@
          <separator name="settings" visible="true" />
          
          <command commandId="com.jensdriller.zeeboxzonechooser.dropdown.commandSettings" label="Settings" style="push">
-            <parameter name="com.jensdriller.zeeboxzonechooser.dropdown.msg" value="Settings"></parameter>
+            <parameter name="com.jensdriller.zeeboxzonechooser.dropdown.settings" value="Settings"></parameter>
          </command>
          
       </menuContribution>

@@ -46,6 +46,10 @@ public class SettingsHandler extends AbstractHandler {
 		dialog.setMessage("Select the BuildConstants.java file from your zeebox project:");
 		dialog.setValidator(new ISelectionStatusValidator() {
 			public IStatus validate(Object[] selection) {
+				if (selection.length == 0) {
+					return new Status(IStatus.ERROR, Activator.PLUGIN_ID, 0,
+							"", null);
+				}
 				if (selection.length == 1 && !(selection[0] instanceof IFile)) {
 					return new Status(IStatus.ERROR, Activator.PLUGIN_ID, 0,
 							"Please select a file!", null);
@@ -62,6 +66,7 @@ public class SettingsHandler extends AbstractHandler {
 		if (buttonId == IDialogConstants.OK_ID) {
 			IResource resource = (IResource) dialog.getFirstResult();
 			if (resource.isAccessible()) {
+				resource.getFullPath().toOSString();
 				return resource.getFullPath().toString();
 			}
 		}
