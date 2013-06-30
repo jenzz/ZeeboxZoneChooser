@@ -4,20 +4,20 @@
    <!-- Toolbar Dropdown Menu -->
    <extension point="org.eclipse.ui.commands">
       <category id="com.jensdriller.zeeboxzonechooser.dropdown.category" name="DropDown"></category>
-      <command categoryId="com.jensdriller.zeeboxzonechooser.dropdown.category" id="com.jensdriller.zeeboxzonechooser.dropdown.logo" name="Logo">
+      <command categoryId="com.jensdriller.zeeboxzonechooser.dropdown.category" id="com.jensdriller.zeeboxzonechooser.dropdown.commandLogo" name="Logo">
          <commandParameter id="com.jensdriller.zeeboxzonechooser.dropdown.logo" name="Logo" optional="true"></commandParameter>
       </command>
       <command categoryId="com.jensdriller.zeeboxzonechooser.dropdown.category" id="com.jensdriller.zeeboxzonechooser.dropdown.commandUS" name="US">
-         <commandParameter id="com.jensdriller.zeeboxzonechooser.dropdown.msg" name="DropDown Option" optional="true"></commandParameter>
+         <commandParameter id="com.jensdriller.zeeboxzonechooser.dropdown.zone" name="DropDown Option" optional="true"></commandParameter>
       </command>
       <command categoryId="com.jensdriller.zeeboxzonechooser.dropdown.category" id="com.jensdriller.zeeboxzonechooser.dropdown.commandUK" name="UK">
-         <commandParameter id="com.jensdriller.zeeboxzonechooser.dropdown.msg" name="DropDown Option" optional="true"></commandParameter>
+         <commandParameter id="com.jensdriller.zeeboxzonechooser.dropdown.zone" name="DropDown Option" optional="true"></commandParameter>
       </command> 
       <command categoryId="com.jensdriller.zeeboxzonechooser.dropdown.category" id="com.jensdriller.zeeboxzonechooser.dropdown.commandIE" name="IE">
-         <commandParameter id="com.jensdriller.zeeboxzonechooser.dropdown.msg" name="DropDown Option" optional="true"></commandParameter>
+         <commandParameter id="com.jensdriller.zeeboxzonechooser.dropdown.zone" name="DropDown Option" optional="true"></commandParameter>
       </command> 
       <command categoryId="com.jensdriller.zeeboxzonechooser.dropdown.category" id="com.jensdriller.zeeboxzonechooser.dropdown.commandAU" name="AU">
-         <commandParameter id="com.jensdriller.zeeboxzonechooser.dropdown.msg" name="DropDown Option" optional="true"></commandParameter>
+         <commandParameter id="com.jensdriller.zeeboxzonechooser.dropdown.zone" name="DropDown Option" optional="true"></commandParameter>
       </command> 
       <command categoryId="com.jensdriller.zeeboxzonechooser.dropdown.category" id="com.jensdriller.zeeboxzonechooser.dropdown.commandSettings" name="Settings">
          <commandParameter id="com.jensdriller.zeeboxzonechooser.dropdown.settings" name="DropDown Option" optional="true"></commandParameter>
@@ -26,7 +26,7 @@
    
    <!-- Icons used for dropdown and for dropdown menu items -->
    <extension point="org.eclipse.ui.commandImages">
-      <image commandId="com.jensdriller.zeeboxzonechooser.dropdown.logo" icon="icons/zeebox.png"></image>
+      <image commandId="com.jensdriller.zeeboxzonechooser.dropdown.commandLogo" icon="icons/zeebox.png"></image>
       <image commandId="com.jensdriller.zeeboxzonechooser.dropdown.commandUS" icon="icons/us.png"></image>
       <image commandId="com.jensdriller.zeeboxzonechooser.dropdown.commandUK" icon="icons/gb.png"></image>
  	  <image commandId="com.jensdriller.zeeboxzonechooser.dropdown.commandIE" icon="icons/ie.png"></image>
@@ -35,7 +35,7 @@
    
    <!-- Handlers for each dropdown menu item clicked -->
    <extension point="org.eclipse.ui.handlers">
-      <handler commandId="com.jensdriller.zeeboxzonechooser.dropdown.logo" class="com.jensdriller.zeeboxzonechooser.handlers.LogoHandler"></handler>
+      <handler commandId="com.jensdriller.zeeboxzonechooser.dropdown.commandLogo" class="com.jensdriller.zeeboxzonechooser.handlers.LogoHandler"></handler>
       <handler commandId="com.jensdriller.zeeboxzonechooser.dropdown.commandUS" class="com.jensdriller.zeeboxzonechooser.handlers.DropDownHandler"></handler>
       <handler commandId="com.jensdriller.zeeboxzonechooser.dropdown.commandUK" class="com.jensdriller.zeeboxzonechooser.handlers.DropDownHandler"></handler>
       <handler commandId="com.jensdriller.zeeboxzonechooser.dropdown.commandIE" class="com.jensdriller.zeeboxzonechooser.handlers.DropDownHandler"></handler>
@@ -48,7 +48,7 @@
       <!-- Toolbar Dropdown Menu -->
       <menuContribution locationURI="toolbar:org.eclipse.ui.main.toolbar?after=additions">
          <toolbar id="com.jensdriller.zeeboxzonechooser.dropdown.toolbar">
-            <command commandId="com.jensdriller.zeeboxzonechooser.dropdown.logo" id="com.jensdriller.zeeboxzonechooser.dropdown.toolbar.logo" style="pulldown" 
+            <command commandId="com.jensdriller.zeeboxzonechooser.dropdown.commandLogo" id="com.jensdriller.zeeboxzonechooser.dropdown.toolbar.logo" style="pulldown" 
                      tooltip="Zeebox TVC Options">
             </command>
          </toolbar>
@@ -56,19 +56,19 @@
       <menuContribution locationURI="menu:com.jensdriller.zeeboxzonechooser.dropdown.toolbar.logo">
          <!-- Dropdown Menu Options -->
          <command commandId="com.jensdriller.zeeboxzonechooser.dropdown.commandUS" label="US" style="push">
-            <parameter name="com.jensdriller.zeeboxzonechooser.dropdown.msg" value="US"></parameter>
+            <parameter name="com.jensdriller.zeeboxzonechooser.dropdown.zone" value="USA"></parameter>
          </command>
          
          <command commandId="com.jensdriller.zeeboxzonechooser.dropdown.commandUK" label="UK" style="push">
-            <parameter name="com.jensdriller.zeeboxzonechooser.dropdown.msg" value="UK"></parameter>
+            <parameter name="com.jensdriller.zeeboxzonechooser.dropdown.zone" value="UK"></parameter>
          </command>
          
          <command commandId="com.jensdriller.zeeboxzonechooser.dropdown.commandIE" label="IE" style="push">
-            <parameter name="com.jensdriller.zeeboxzonechooser.dropdown.msg" value="IE"></parameter>
+            <parameter name="com.jensdriller.zeeboxzonechooser.dropdown.zone" value="IRELAND"></parameter>
          </command>
          
          <command commandId="com.jensdriller.zeeboxzonechooser.dropdown.commandAU" label="AU" style="push">
-            <parameter name="com.jensdriller.zeeboxzonechooser.dropdown.msg" value="AU"></parameter>
+            <parameter name="com.jensdriller.zeeboxzonechooser.dropdown.zone" value="AUSTRALIA"></parameter>
          </command>
          
          <separator name="settings" visible="true" />

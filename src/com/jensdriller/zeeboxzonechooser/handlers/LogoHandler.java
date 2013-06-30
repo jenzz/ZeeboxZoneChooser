@@ -25,7 +25,7 @@ public class LogoHandler extends AbstractHandler {
 					+ "Choose any TVC from the dropdown menu to launch the app.";
 		} else {
 			message = "Oops, you haven't told me where to find your BuildConstants.java yet." //
-					+ "\n" //
+					+ "\n\n" //
 					+ "Open the settings and choose the correct file.";
 		}
 
