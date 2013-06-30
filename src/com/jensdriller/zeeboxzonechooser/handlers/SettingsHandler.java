@@ -54,16 +54,15 @@ public class SettingsHandler extends AbstractHandler {
 			}
 		});
 
-		IResource resource = null;
 		int buttonId = dialog.open();
 		if (buttonId == IDialogConstants.OK_ID) {
-			resource = (IResource) dialog.getFirstResult();
-			if (!resource.isAccessible()) {
-				return null;
+			IResource resource = (IResource) dialog.getFirstResult();
+			if (resource.isAccessible()) {
+				return resource.getFullPath().toString();
 			}
 		}
 
-		return resource.getFullPath().toString();
+		return null;
 	}
 
 	private void saveBuildConstantsPath(String path) {
@@ -81,4 +80,5 @@ public class SettingsHandler extends AbstractHandler {
 		Preferences prefs = InstanceScope.INSTANCE.getNode(Activator.PLUGIN_ID);
 		return prefs.get(KEY, null);
 	}
+
 }
