@@ -8,32 +8,35 @@ import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.dialogs.ElementTreeSelectionDialog;
 import org.eclipse.ui.dialogs.ISelectionStatusValidator;
 import org.eclipse.ui.model.BaseWorkbenchContentProvider;
 import org.eclipse.ui.model.WorkbenchLabelProvider;
+import org.osgi.service.prefs.BackingStoreException;
+import org.osgi.service.prefs.Preferences;
 
 import com.jensdriller.zeeboxzonechooser.Activator;
 
 public class SettingsHandler extends AbstractHandler {
 
+	private static final String KEY = "path";
+
 	public SettingsHandler() {
 	}
 
 	public Object execute(ExecutionEvent event) throws ExecutionException {
-		IResource buildConstants = getWorkspaceResourceElement();
-		if (buildConstants != null) {
-			System.out.println(buildConstants.getFullPath().toString());
+		String path = getBuildConstantsPathViaDialog();
+		if (path != null) {
+			saveBuildConstantsPath(path);
 		}
 
 		return null;
 	}
 
-	public static IResource getWorkspaceResourceElement() {
-		IResource resource = null;
-
+	private String getBuildConstantsPathViaDialog() {
 		ElementTreeSelectionDialog dialog = new ElementTreeSelectionDialog(
 				PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
 				new WorkbenchLabelProvider(),
@@ -51,6 +54,7 @@ public class SettingsHandler extends AbstractHandler {
 			}
 		});
 
+		IResource resource = null;
 		int buttonId = dialog.open();
 		if (buttonId == IDialogConstants.OK_ID) {
 			resource = (IResource) dialog.getFirstResult();
@@ -58,7 +62,23 @@ public class SettingsHandler extends AbstractHandler {
 				return null;
 			}
 		}
-		return resource;
+
+		return resource.getFullPath().toString();
 	}
 
+	private void saveBuildConstantsPath(String path) {
+		Preferences prefs = InstanceScope.INSTANCE.getNode(Activator.PLUGIN_ID);
+		prefs.put(KEY, path);
+
+		try {
+			prefs.flush();
+		} catch (BackingStoreException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static String loadBuildConstantsPath() {
+		Preferences prefs = InstanceScope.INSTANCE.getNode(Activator.PLUGIN_ID);
+		return prefs.get(KEY, null);
+	}
 }

@@ -7,23 +7,11 @@ import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.handlers.HandlerUtil;
 import org.eclipse.jface.dialogs.MessageDialog;
 
-/**
- * Our sample handler extends AbstractHandler, an IHandler base class.
- * 
- * @see org.eclipse.core.commands.IHandler
- * @see org.eclipse.core.commands.AbstractHandler
- */
 public class DropDownHandler extends AbstractHandler {
-	/**
-	 * The constructor.
-	 */
+
 	public DropDownHandler() {
 	}
 
-	/**
-	 * the command has been executed, so extract extract the needed information
-	 * from the application context.
-	 */
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		IWorkbenchWindow window = HandlerUtil
 				.getActiveWorkbenchWindowChecked(event);
@@ -32,8 +20,12 @@ public class DropDownHandler extends AbstractHandler {
 				.getParameter("com.jensdriller.zeeboxzonechooser.dropdown.msg");
 		selection = selection == null ? "zeebox" : selection;
 
+		String path = SettingsHandler.loadBuildConstantsPath();
+		path = path != null ? path : "Unknown";
+
 		MessageDialog.openInformation(window.getShell(), "Popup Window",
-				"You selected " + selection + ".");
+				"You selected " + selection + ".\n" + "Settings path: " + path);
+
 		return null;
 	}
 }
