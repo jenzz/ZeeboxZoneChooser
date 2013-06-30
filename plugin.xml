@@ -19,6 +19,9 @@
       <command categoryId="com.jensdriller.zeeboxzonechooser.dropdown.category" id="com.jensdriller.zeeboxzonechooser.dropdown.commandAU" name="AU">
          <commandParameter id="com.jensdriller.zeeboxzonechooser.dropdown.msg" name="DropDown Options" optional="true"></commandParameter>
       </command> 
+      <command categoryId="com.jensdriller.zeeboxzonechooser.dropdown.category" id="com.jensdriller.zeeboxzonechooser.dropdown.commandSettings" name="Settings">
+         <commandParameter id="com.jensdriller.zeeboxzonechooser.dropdown.msg" name="DropDown Options" optional="true"></commandParameter>
+      </command> 
    </extension>
    
    <!-- Icons used for dropdown and for dropdown menu items -->
@@ -37,6 +40,7 @@
       <handler commandId="com.jensdriller.zeeboxzonechooser.dropdown.commandUK" class="com.jensdriller.zeeboxzonechooser.handlers.DropDownHandler"></handler>
       <handler commandId="com.jensdriller.zeeboxzonechooser.dropdown.commandIE" class="com.jensdriller.zeeboxzonechooser.handlers.DropDownHandler"></handler>
       <handler commandId="com.jensdriller.zeeboxzonechooser.dropdown.commandAU" class="com.jensdriller.zeeboxzonechooser.handlers.DropDownHandler"></handler>
+      <handler commandId="com.jensdriller.zeeboxzonechooser.dropdown.commandSettings" class="com.jensdriller.zeeboxzonechooser.handlers.SettingsHandler"></handler>
    </extension>
    
    <!-- Dropdown Menu Options -->
@@ -66,6 +70,13 @@
          <command commandId="com.jensdriller.zeeboxzonechooser.dropdown.commandAU" label="AU" style="push">
             <parameter name="com.jensdriller.zeeboxzonechooser.dropdown.msg" value="AU"></parameter>
          </command>
+         
+         <separator name="settings" visible="true" />
+         
+         <command commandId="com.jensdriller.zeeboxzonechooser.dropdown.commandSettings" label="Settings" style="push">
+            <parameter name="com.jensdriller.zeeboxzonechooser.dropdown.msg" value="Settings"></parameter>
+         </command>
+         
       </menuContribution>
    </extension>
 </plugin>

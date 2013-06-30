@@ -4,7 +4,6 @@ Bundle-Name: ZeeboxZoneChooser
 Bundle-SymbolicName: ZeeboxZoneChooser; singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: com.jensdriller.zeeboxzonechooser.Activator
-Require-Bundle: org.eclipse.ui,
- org.eclipse.core.runtime
+Require-Bundle: org.eclipse.ui, org.eclipse.core.runtime, org.eclipse.core.resources;bundle-version="3.8.1"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
